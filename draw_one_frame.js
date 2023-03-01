@@ -29,6 +29,7 @@ function draw_one_frame() {
 
 		fill(0,i*10,255-k*10);
 		ellipse((x-i*20)%width,(y-k*20)%height,i+3,i+3);
+		
 // 		rotate(PI / 24.0);
 // 		fill(255-(i+k)*5,(i+k)*7,i*20);
 // 		drawtriangle((a+i*20)%width,(b+k*20)%height,k/8);
