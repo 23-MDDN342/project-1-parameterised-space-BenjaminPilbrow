@@ -6,11 +6,6 @@ let firstRun  = true;
 function draw_one_frame() {
 if(firstRun){
 
-  // createCanvfirstRunas(
-  //   window.innerWidth,
-  //   window.innerHeight
-  // );
-
   background (0) // set background colour
   let x = 0;
   for (let i = 0; i <= width / charSize; i++) {
@@ -23,7 +18,7 @@ if(firstRun){
 firstRun = false;
 }
 
-  background(0, 100);
+  background(0, 180);
   streams.forEach(function(stream) {
     stream.render();
   });
