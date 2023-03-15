@@ -1,4 +1,4 @@
-let charSize = 60; // set char size
+let charSize = 20; // set char size
 let streams = []; // create array for the streams
 let firstRun  = true;
 
@@ -53,8 +53,8 @@ function Char(x, y, speed, first) {
 
 function Stream(){
   this.chars = [];
-  this.totalChars = round(random(5, 35)); // select total number of symbols for each row
-  this.speed = random(5, 25); // select random speed for symbols
+  this.totalChars = 5//round(random(5, 35)); // select total number of symbols for each row
+  this.speed = 50//random(30, 50); // select random speed for symbols
 
   this.generateChars = function(x, y) {
     let first = round(random(0, 4)) == 1; // check if number is == to 1, if so set to true otherwise set to false
@@ -75,6 +75,7 @@ function Stream(){
       } else {
         fill(0, 255, 70); // symbol colour, green
       }
+      textSize(charSize)
       text(char.value, char.x, char.y); // display the symbol as text
       char.rain(); // call the rain function
       char.setToRandomChar();
