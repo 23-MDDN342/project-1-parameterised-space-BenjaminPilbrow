@@ -53,7 +53,7 @@ function Char(x, y, speed, first) {
 
 function Stream(){
   this.chars = [];
-  this.totalChars = 5//round(random(5, 35)); // select total number of symbols for each row
+  this.totalChars = 8//round(random(5, 35)); // select total number of symbols for each row
   this.speed = 25//random(30, 50); // select random speed for symbols
 
   this.generateChars = function(x, y) {
