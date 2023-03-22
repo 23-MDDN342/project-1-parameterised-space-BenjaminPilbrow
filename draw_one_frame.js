@@ -1,4 +1,4 @@
-let charSize = 20; // set char size
+let charSize = 0 //20; // set char size
 let streams = []; // create array for the streams
 let firstRun  = true;
 let hue = 0;
@@ -7,7 +7,7 @@ let hueChange = true;
 
 function draw_one_frame() {
 if(firstRun){
-
+  charSize = width / 100
   background (0) // set background colour
   let x = 0;
   for (let i = 0; i <= width / charSize; i++) {
@@ -20,9 +20,10 @@ if(firstRun){
 firstRun = false;
 }
 
-  background(10);
+  background(20);
   streams.forEach(function(stream) {
     stream.render();
+    stream.render2();
   });
 
   if (hue == 0){
@@ -73,7 +74,7 @@ function Stream(){
   this.speed = 25//random(30, 50); // select random speed for symbols
 
   this.generateChars = function(x, y) {
-    let first = round(random(0, 4)) == 1; // check if number is == to 1, if so set to true otherwise set to false
+    let first = 1 == 1; // check if number is == to 1, if so set to true otherwise set to false
     for (let i =0; i <= this.totalChars; i++) {
       char = new Char(x, y, this.speed, first);
       char.setToRandomChar();
@@ -90,10 +91,27 @@ function Stream(){
       if (char.first) {
         fill(hue, 255, 255);
       } else {
-        fill(hue, 255, 255); // symbol colour, green
+        fill(hue, 255, 50); // symbol colour, green
       }
       textSize(charSize)
       text(char.value, char.x, char.y); // display the symbol as text
+      char.rain(); // call the rain function
+      char.setToRandomChar();
+    });
+
+  }
+
+  this.render2 = function() {
+    
+    this.chars.forEach(function(char) {
+      colorMode(HSB)
+      if (char.first) {
+        fill(hue+20, 255, 100);
+      } else {
+        fill(hue+20, 255, 25); // symbol colour, green
+      }
+      textSize(charSize - 5)
+      text(char.value, char.x + 100, char.y + 100); // display the symbol as text
       char.rain(); // call the rain function
       char.setToRandomChar();
     });
