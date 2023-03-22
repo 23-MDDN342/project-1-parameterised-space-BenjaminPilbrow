@@ -1,6 +1,8 @@
 let charSize = 20; // set char size
 let streams = []; // create array for the streams
 let firstRun  = true;
+let hue = 0;
+let hueChange = true;
 
 
 function draw_one_frame() {
@@ -18,10 +20,24 @@ if(firstRun){
 firstRun = false;
 }
 
-  background(0, 180);
+  background(10);
   streams.forEach(function(stream) {
     stream.render();
   });
+
+  if (hue == 0){
+    hueChange = true
+  } else if (hue == 100) {
+    hueChange = false
+  }
+
+  if (hueChange == true) {
+    hue = hue + 5;
+  }
+  else if (hueChange == false) {
+    hue = hue - 5;
+  }
+
 }
 
 function Char(x, y, speed, first) {
@@ -70,10 +86,11 @@ function Stream(){
   this.render = function() {
     
     this.chars.forEach(function(char) {
+      colorMode(HSB)
       if (char.first) {
-        fill(180, 255, 180);
+        fill(hue, 255, 255);
       } else {
-        fill(0, 255, 70); // symbol colour, green
+        fill(hue, 255, 255); // symbol colour, green
       }
       textSize(charSize)
       text(char.value, char.x, char.y); // display the symbol as text
