@@ -19,8 +19,7 @@ if(firstRun){
   textSize(charSize);
 firstRun = false;
 }
-  colorMode(HSB)
-  background(hue*2, 255, 10);
+  background(20);
   streams.forEach(function(stream) {
     stream.render();
     stream.render2();
